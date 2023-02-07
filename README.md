@@ -1,5 +1,5 @@
 # SerpsBot-CLI v1.0 by ToyBlackHat
-
+[![Go](https://github.com/ToyBlackHat/serpsbot-cli/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/ToyBlackHat/serpsbot-cli/actions/workflows/go.yml)
 A command line (cli) tool, for [SerpsBot](https://www.serpsbot.com) service, written in Golang
 
 ## Limitations
@@ -27,4 +27,3 @@ All available command line options:
     ./serpsbot-cli --apikey=<YOUR API KEY> --keywords="mama madzi" --gl=PL --hl=pl --outputfile=mama_madzi.txt  
     ./serpsbot-cli --apikey=<YOUR API KEY> --gl=PL --hl=pl --outputfile=mama_madzi2.txt --inputfile=mama_madzi.txt --merge
     ```
-
