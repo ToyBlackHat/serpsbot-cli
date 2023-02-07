@@ -171,8 +171,9 @@ func main() {
 			end = len(keywords)
 		}
 		keywords50 := keywords[i:end]
+
 		fmt.Println("Processing", len(keywords50), "keywords, gl=", *gl_cli, "hl=", *hl_cli, "")
-		result, err := SerpsGetSuggestions(keywords, *apikey_cli, *gl_cli, *hl_cli)
+		result, err := SerpsGetSuggestions(keywords50, *apikey_cli, *gl_cli, *hl_cli)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)
