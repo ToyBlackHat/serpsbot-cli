@@ -1,5 +1,6 @@
 # SerpsBot-CLI v1.0 by ToyBlackHat
-[![Go](https://github.com/ToyBlackHat/serpsbot-cli/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/ToyBlackHat/serpsbot-cli/actions/workflows/go.yml)
+[![Build](https://github.com/ToyBlackHat/serpsbot-cli/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/ToyBlackHat/serpsbot-cli/actions/workflows/go.yml)
+
 A command line (cli) tool, for [SerpsBot](https://www.serpsbot.com) service, written in Golang
 
 ## Limitations
