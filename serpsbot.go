@@ -25,6 +25,10 @@ type SerpsbotSuggestions struct {
 	} `json:"data"`
 }
 
+type Serpsbot struct {
+	Apikey string
+}
+
 func WriteStringToFile(filename string, line string) error {
 	f, err := os.OpenFile(filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
@@ -110,8 +114,49 @@ func main() {
 	gl_cli := flag.String("gl", "US", "The ISO code of the country for which you want to get the suggestions for")
 	hl_cli := flag.String("hl", "en_US", "The language to get the suggestions for.")
 	merge_cli := flag.Bool("merge", false, "Add keywords from input to the output (result) file")
+	setup_cli := flag.Bool("setup", false, "Setup Serpsbot API Key")
 
 	flag.Parse()
+
+	//open file ~/.serpsbot-cli.json and read apikey from there
+
+	var sbot Serpsbot
+	homedir, err := os.UserHomeDir()
+	if err != nil {
+		fmt.Println("Error obtaining $HOME directory:", err)
+	}
+	jsonFile, err := os.ReadFile(homedir + "/.serpsbot-cli.json")
+	if err == nil {
+		// open file ~/.serpsbot-cli.json and read apikey
+		fmt.Println("Reading API key from ~/.serpsbot-cli.json")
+		err = json.Unmarshal(jsonFile, &sbot)
+		if err != nil {
+			fmt.Println("Error reading file:", err)
+		}
+		// fmt.Println(sbot.Apikey)
+	}
+
+	// if setup flag is set, ask for apikey and save it to ~/.serpsbot-cli.json
+	if *setup_cli {
+		fmt.Println("Please enter your API key:")
+		_, _ = fmt.Scan(&sbot.Apikey)
+
+		// save to ~/.serpsbot-cli.json
+		b, err := json.Marshal(sbot)
+		if err != nil {
+			fmt.Println("Error creating file:", err)
+		}
+		err = os.WriteFile(homedir+"/.serpsbot-cli.json", b, 0o644)
+		if err != nil {
+			fmt.Println("Error writing to file:", err)
+		}
+		fmt.Println("API key saved to ~/.serpsbot-cli.json")
+		os.Exit(0)
+	}
+
+	if *apikey_cli == "" {
+		*apikey_cli = sbot.Apikey
+	}
 
 	if *keywords_cli == "" && *inputfile_cli == "" {
 		fmt.Println("Please specify a keyword(s) for --keywords= or a file with keywords for --inputfile=")
