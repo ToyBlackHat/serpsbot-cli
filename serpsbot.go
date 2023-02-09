@@ -111,9 +111,10 @@ func main() {
 	apikey_cli := flag.String("apikey", "", "Serpsbot API Key")
 	outputfile_cli := flag.String("outputfile", "", "Output file to save results to")
 	inputfile_cli := flag.String("inputfile", "", "Input file with keywords to get suggestions from Google")
-	gl_cli := flag.String("gl", "US", "The ISO code of the country for which you want to get the suggestions for")
-	hl_cli := flag.String("hl", "en_US", "The language to get the suggestions for.")
+	gl_cli := flag.String("gl", "US", "Geographic Location. The ISO code of the country for which you want to get the suggestions for")
+	hl_cli := flag.String("hl", "en_US", "Home Language. The language to get the suggestions for.")
 	merge_cli := flag.Bool("merge", false, "Add keywords from input to the output (result) file")
+
 	setup_cli := flag.Bool("setup", false, "Setup Serpsbot API Key")
 
 	flag.Parse()
