@@ -10,14 +10,29 @@ If you need additional features please [contact me](mailto:toyblackhat@pm.me).
 ## Usage:
 Most basic query, get a list of suggestions for presented keywords separated by ',' *(comma)*:
 ```
-./serpsbot-cli --keywords=<KEYWORD>,<KEYWORD2>,<KEYWORD3> --apikep=<YOUR API KEY>
+./serpsbot-cli --keywords=<KEYWORD>,<KEYWORD2>,<KEYWORD3> --apikey=<YOUR API KEY>
 ```
 All available command line options:
 ```
 ./serpsbot-cli --help
 ```
 
-### Useful scenarios:
+## Installation
+ Install golang on your platform by following [this instruction](https://go.dev/doc/install). Then build this project by 
+```
+go build
+```
+ or take a look at makefile and use `make` tool.
+
+## Setup
+You can write a Serpsbot's API code to a JSON config file by running the command:
+```
+serpsbot-cli --setup
+```
+The program will ask you for an API code and save it in your home directory in file `~/.serpsbot-cli.json`. From now, you'll no need to enter the API code in `--apikey` command line option.
+
+
+## Useful scenarios:
 
 1. Process keyword list from input.txt and receive keyword extensions (suggestions) in output.txt. Results and input keywords are merged in the output file.
     ```
