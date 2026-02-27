@@ -1,3 +1,3 @@
 module github.com/ToyBlackHat/serpsbot-cli
 
-go 1.19
+go 1.22
